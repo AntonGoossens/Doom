@@ -1,4 +1,4 @@
-import static java.lang.Thread.sleep;
+package version2;
 
 public class Doom {
     private Room room;

@@ -1,3 +1,5 @@
+package version1;
+
 public class Room {
     public static final int WIDTH = 10;
     public static final int HEIGHT = 10;
@@ -23,6 +25,7 @@ public class Room {
     }
 
     public void draw() {
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
         for (char[] row : floorPlan) {
             for (char karakter : row) {
                 System.out.print(karakter + " ");

@@ -1,3 +1,5 @@
+package version1;
+
 import java.util.Random;
 
 public class Player {
@@ -36,8 +38,11 @@ public class Player {
 
     public void move() {
         while (true) {
-            int dxWaarde = random.nextBoolean() ? -1 : random.nextBoolean() ? 0 : 1;
-            int dyWaarde = random.nextBoolean() ? -1 : random.nextBoolean() ? 0 : 1;
+            //betere kans berekening dan de booleans
+            //de booleans was -1 = 50% && 0 = 25% || 1 = 25% (gevolg: gaat naar linkse boven hoek [0,0])
+            //nu met de int is het allemaal 33,333...%
+            int dxWaarde = random.nextInt(3)-1;
+            int dyWaarde = random.nextInt(3)-1;
             if (room.isFree(getX() + dxWaarde, getY() + dyWaarde)) {
                 this.x += dxWaarde;
                 this.y += dyWaarde;
