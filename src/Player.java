@@ -17,11 +17,11 @@ public class Player{
     }
 
     public int getX() {
-        return x;
+        return this.x;
     }
 
     public int getY() {
-        return y;
+        return this.y;
     }
 
     public void setRoom() {
@@ -56,7 +56,7 @@ public class Player{
     }
 
     public boolean isDeath() {
-        return health <= 0;
+        return this.health <= 0;
     }
 
     public String toString() {
