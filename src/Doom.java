@@ -3,24 +3,30 @@ import static java.lang.Thread.sleep;
 public class Doom {
     private Room room;
 
-    public Doom(){
+    public Doom() {
         room = new Room();
     }
-    public boolean isFinished(){
+
+    public boolean isFinished() {
         return room.isFinished();
     }
-    public void start(){
-        while(!(isFinished())){
+
+    public void start() {
+        while (!(isFinished())) {
             room.update();
             room.draw();
+
+            this.showInfo();
+
             try {
-                sleep(500);
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
     }
-    private void showInfo(){
+
+    private void showInfo() {
         System.out.println(room.getPlayer().getHealth());
     }
 }

@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class Player{
+public class Player {
     public static final double START_HEALTH = 9.0;
     private double health;
     private int x;
@@ -11,7 +11,6 @@ public class Player{
     public Player(int x, int y) {
         this.x = x;
         this.y = y;
-        //Als ik een Room maak en bij setRoom() kom zit ik in een oneindige lus.
         this.health = START_HEALTH;
     }
 
@@ -26,32 +25,25 @@ public class Player{
     public void setRoom(Room room) {
         this.room = room;
     }
-    public Room getRoom(){
-        return this.room;
-    }
 
     public void attack(double damage) {
-
+        this.health -= damage;
     }
-    public double getHealth(){
+
+    public double getHealth() {
         return this.health;
     }
 
     public void move() {
-        int dxWaarde;
-        int dyWaarde;
-        do {
-            boolean dxPositief = random.nextBoolean();
-            boolean dyPositief = random.nextBoolean();
-            if (dxPositief) dxWaarde = -1;
-            else dxWaarde = 1;
-            if (dyPositief) dyWaarde = 1;
-            else dyWaarde = -1;
+        while (true) {
+            int dxWaarde = random.nextBoolean() ? -1 : random.nextBoolean() ? 0 : 1;
+            int dyWaarde = random.nextBoolean() ? -1 : random.nextBoolean() ? 0 : 1;
+            if (room.isFree(getX() + dxWaarde, getY() + dyWaarde)) {
+                this.x += dxWaarde;
+                this.y += dyWaarde;
+                return;
+            }
         }
-        while (room.isFree(getX() + dxWaarde, getY() + dyWaarde));
-        this.x+=dxWaarde;
-        this.y+=dyWaarde;
-
     }
 
     public boolean isDeath() {

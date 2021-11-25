@@ -1,31 +1,23 @@
-public class Room{
-    public static final int WIDTH = 100;
-    public static final int HEIGHT = 50;
+public class Room {
+    public static final int WIDTH = 10;
+    public static final int HEIGHT = 10;
     private Player player;
     private char[][] floorPlan;
 
     public Room() {
         this.player = new Player(WIDTH / 2, HEIGHT / 2);
         floorPlan = new char[WIDTH][HEIGHT];
+        player.setRoom(this);
         createFloorplan();
     }
 
     private void createFloorplan() {
-        final int WIDTH = 60;
-        final int HEIGHT = 20;
-        char[][] floorPlan = new char[HEIGHT][WIDTH];
-
-        for (int i = 0; i < WIDTH; i++) {
-            floorPlan[0][i] = '-';
-            floorPlan[HEIGHT - 1][i] = '-';
-        }
+        floorPlan = new char[HEIGHT][WIDTH];
         for (int i = 0; i < HEIGHT; i++) {
-            floorPlan[i][0] = '|';
-            floorPlan[i][WIDTH - 1] = '|';
-        }
-        for (int i = 1; i < HEIGHT - 1; i++) {
-            for (int j = 1; j < WIDTH - 1; j++) {
-                floorPlan[i][j] = ' ';
+            for (int j = 0; j < WIDTH; j++) {
+                if (i == 0 || i == HEIGHT - 1) floorPlan[i][j] = '-';
+                else if (j == 0 || j == WIDTH - 1) floorPlan[i][j] = '|';
+                else floorPlan[i][j] = ' ';
             }
         }
     }
@@ -40,7 +32,10 @@ public class Room{
     }
 
     public boolean isFree(int x, int y) {
-        return floorPlan[x][y] == ' ';
+        if (x < floorPlan.length && x >= 0)
+            if (y < floorPlan[x].length && y >= 0)
+                return floorPlan[x][y] == ' ';
+        return false;
     }
 
     public boolean isFinished() {
