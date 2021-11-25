@@ -13,7 +13,7 @@ public class Player{
         this.y = y;
         //Als ik een Room maak en bij setRoom() kom zit ik in een oneindige lus.
         setRoom();
-        health = START_HEALTH;
+        this.health = START_HEALTH;
     }
 
     public int getX() {
@@ -28,14 +28,14 @@ public class Player{
         this.room = new Room();
     }
     public Room getRoom(){
-        return room;
+        return this.room;
     }
 
     public void attack(double damage) {
 
     }
     public double getHealth(){
-        return health;
+        return this.health;
     }
 
     public void move() {
