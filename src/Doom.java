@@ -27,6 +27,6 @@ public class Doom {
     }
 
     private void showInfo() {
-        System.out.println(room.getPlayer().getHealth());
+        System.out.println("Health: "+room.getPlayer().getHealth());
     }
 }
