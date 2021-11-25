@@ -12,7 +12,6 @@ public class Player{
         this.x = x;
         this.y = y;
         //Als ik een Room maak en bij setRoom() kom zit ik in een oneindige lus.
-        setRoom();
         this.health = START_HEALTH;
     }
 
@@ -24,8 +23,8 @@ public class Player{
         return this.y;
     }
 
-    public void setRoom() {
-        this.room = new Room();
+    public void setRoom(Room room) {
+        this.room = room;
     }
     public Room getRoom(){
         return this.room;

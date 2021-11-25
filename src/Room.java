@@ -28,12 +28,6 @@ public class Room{
                 floorPlan[i][j] = ' ';
             }
         }
-        for (char[] row : floorPlan) {
-            for (char karakter : row) {
-                System.out.print(karakter + " ");
-            }
-            System.out.println();
-        }
     }
 
     public void draw() {
